@@ -1,7 +1,7 @@
 import crypto from "crypto";
 
 // Function to verify JWT
-export function verifyJWT(token, secret) {
+export default function verifyJWT(token, secret) {
   const [encodedHeader, encodedPayload, signature] = token.split(".");
 
   // Recompute the signature

@@ -1,7 +1,7 @@
 import crypto from "crypto";
 
 // Function to create JWT
-export function createJWT(payload, { secret, expiresIn }) {
+export default function createJWT(payload, { secret, expiresIn }) {
   // Header
   const header = {
     alg: "HS256",
