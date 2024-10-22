@@ -7,15 +7,17 @@ const Login = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("Email:", email);
-    console.log("Password:", password);
     try {
       const url = "http://localhost:3020/api/login";
-      const res = await axios.post(url, {
-        email,
-        password,
-      });
-      console.log(res.body);
+      const res = await axios.post(
+        url,
+        {
+          email,
+          password,
+        },
+        { withCredentials: true }
+      );
+      console.log(res.data);
     } catch (err) {
       console.log(err);
     }
