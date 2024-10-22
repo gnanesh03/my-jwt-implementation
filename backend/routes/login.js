@@ -15,9 +15,11 @@ login_router.post("/login", (req, res) => {
   try {
     const token = createJWT(
       { sub: sub, user_role: user_role, permissions: "read write delete" },
-      { secret: secret, expiresIn: 20 }
+      { secret: secret, expiresIn: "2h" }
     );
     console.log("Token: ", token);
+
+    res.send(token);
 
     const decoded = verifyJWT(token, secret);
 
@@ -25,8 +27,8 @@ login_router.post("/login", (req, res) => {
   } catch (err) {
     console.log(err);
   }
-
-  res.send("Login route working");
 });
+
+login_router.post("/update-profile", (req, res) => {});
 
 export default login_router;

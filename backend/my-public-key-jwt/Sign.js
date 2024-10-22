@@ -1,5 +1,5 @@
 import crypto from "crypto";
-
+import { v1 as uuidv1 } from "uuid"; // For version 1 UUID
 // Function to create JWT
 export default function createJWT(payload, { privateKey, expiresIn }) {
   // Header for RSA
@@ -16,6 +16,12 @@ export default function createJWT(payload, { privateKey, expiresIn }) {
     payload.expirationDate = expFormatted; // Add 'exp' claim to the payload as a readable date string
     payload.exp = expInSeconds; // Store 'exp' claim as a Unix timestamp
   }
+  // payload.audience = ["transport dep", "HR department"]
+
+  // Generate a Unique ID for the token
+  const unique_id = uuidv1();
+  //console.log(uniqueId); // Example output: '110e8400-e29b-41d4-a716-446655440000'
+  payload.token_id = unique_id;
 
   // Base64-url encode the header and payload
   const encodedHeader = base64UrlEncode(JSON.stringify(header));

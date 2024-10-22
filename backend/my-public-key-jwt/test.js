@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 dotenv.config();
 const payload = { sub: "peter", user_role: "student" };
 
+// generate public and private keys from function if you want
 //let { publicKey, privateKey } = getRSAKeys();
 
 let publicKey = process.env.PUBLIC_KEY;
